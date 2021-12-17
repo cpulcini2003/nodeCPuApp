@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: default
+  name: demo-cicd
+  labels:
+    app: demo-cicd
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: demo-cicd
+  template:
+    metadata:
+      labels:
+        app: demo-cicd
+    spec:
+      containers:
+      - name: demo-cicd
+        image: cpulcini2003/hub-rep1:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
