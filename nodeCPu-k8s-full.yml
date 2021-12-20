@@ -1,0 +1,40 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: default
+  name: demo-cicd
+  labels:
+    application: demo-cicd
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      application: demo-cicd
+  template:
+    metadata:
+      labels:
+        application: demo-cicd
+    spec:
+      containers:
+      - name: demo-cicd
+        image: cpulcini2003/hub-rep1:prova1
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8082
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: demo-cicd-svc
+  namespace: default
+spec:
+  ports:
+  - nodePort: 30806
+    port: 8082
+    protocol: TCP
+    targetPort: 8082
+  selector:
+    application: demo-cicd
+  sessionAffinity: None
+  type: LoadBalancer
