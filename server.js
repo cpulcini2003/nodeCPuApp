@@ -12,7 +12,7 @@ const HTMLPAGE = `<!DOCTYPE html>
 
 <h1>Carlo's very basic web service</h1>
 
-<p>Testing Cloud Native tools. Third iteration..</p>
+<p>Testing Cloud Native tools. Fourth iteration..</p>
 
 </body>
 </html>
